@@ -11,17 +11,29 @@ public class Main {
         int c = Integer.parseInt(st.nextToken());
         int mid = 0;
 
-        if(a>b) {
-            if(a<c) {
-                mid = a;
-            }
-        } else if (b>a) {
+        // a가 제일 클 때
+        // b 아니면 c 
+        // 경우의 수 2가지 x 3 = 6
+        if(a>b && a>c) {
             if(b<c) {
+                mid = c;
+            }
+            else {
                 mid = b;
             }
-        } else if (c>a) {
-            if(c<b) {
+        } else if(b>a && b>c) {
+            if(a<c) {
                 mid = c;
+            }
+            else {
+                mid = a;
+            }
+        } else if(c>b && c>a) {
+            if(a<b) {
+                mid = b;
+            }
+            else {
+                mid = a;
             }
         }
 
