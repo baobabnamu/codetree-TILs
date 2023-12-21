@@ -8,7 +8,7 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
 
-        System.out.print(n*n+"");
+        System.out.println(n*n+"");
         if(n<5) {
             System.out.print("tiny");
         }
