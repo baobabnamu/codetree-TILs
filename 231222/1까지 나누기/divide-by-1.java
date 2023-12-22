@@ -9,10 +9,8 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         int cnt = 0;
 
-        while(n>0) {
-            cnt++;
-            n/=cnt;
-        }
+        while(n>1)
+            n/=++cnt;
 
         System.out.printf("%d", cnt);
     }
