@@ -7,14 +7,14 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
-        int cnt = 1;
+        int cnt = 0;
 
         for(int i=1; n<1000; i++) {
             cnt++;
             if(n%2 == 0) {
-                n*=3+1;
+                n=(n*3)+1;
             } else {
-                n*=2+2;
+                n=(n*2)+2;
             }
         }
         
