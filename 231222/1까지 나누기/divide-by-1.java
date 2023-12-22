@@ -9,7 +9,7 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         int cnt = 0;
 
-        while(n>=1) {
+        while(n>0) {
             cnt++;
             n/=cnt;
         }
