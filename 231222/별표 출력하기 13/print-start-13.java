@@ -10,29 +10,15 @@ public class Main {
         
         // 윗단
         for(int i=1; i<=n; i++) {
-            System.out.print("* ");
-        }
-        System.out.println();
+            for(int j=n; j>=i; j--) {
+                System.out.print("* ");
+            }
+            System.out.println();
 
-        // 중간
-        for(int i=1; i<n; i++) {
             for(int j=0; j<i; j++) {
                 System.out.print("* ");
             }
             System.out.println();
         }
-        for(int i=1; i<n; i++) {
-            for(int j=i; j<n; j++) {
-                System.out.print("* ");
-            }
-            System.out.println();
-        }
-        
-
-        // 아랫단
-        for(int i=1; i<=n; i++) {
-            System.out.print("* ");
-        }
-        System.out.println();
     }
 }
