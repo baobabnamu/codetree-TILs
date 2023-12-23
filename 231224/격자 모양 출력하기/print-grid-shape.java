@@ -10,7 +10,7 @@ public class Main {
 
         int[][] arr = new int[n][n];
         int row, col;
-        for(int i=0; i<n; i++) {
+        for(int i=0; i<m; i++) {
             st = new StringTokenizer(br.readLine());
             row = Integer.parseInt(st.nextToken());
             col = Integer.parseInt(st.nextToken());
