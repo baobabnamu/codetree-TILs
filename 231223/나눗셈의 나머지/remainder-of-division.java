@@ -11,7 +11,7 @@ public class Main {
         int[] cnt = new int[b];
 
         // counting
-        while(a>=1) {
+        while(a>1) {
             remainder = a % b;
             cnt[remainder] += 1;
             a /= b;
