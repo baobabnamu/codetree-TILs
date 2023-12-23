@@ -7,7 +7,7 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
 
-        // 아이디어 : 아스키 코드 순회 활용 -> 'A' 65
+        // 아이디어 : 아스키 코드 순회 활용 -> 'A' 65, 'Z' 90
         int ascii = 65;
         for(int i=0; i<n; i++) {
             if(i>=1) {
@@ -16,6 +16,9 @@ public class Main {
                 }
             }
             for(int j=i; j<n; j++) {
+                if(ascii>90) {
+                    ascii = 65;
+                }
                 System.out.printf("%c ", (char)ascii++);
             }
             System.out.println();
