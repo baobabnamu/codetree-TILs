@@ -31,7 +31,7 @@ public class Main {
             }
         }
 
-        double avg = sum/cnt;
+        double avg = (double)sum/cnt;
         System.out.printf("%d %.2f", cnt, avg);
     }
 }
