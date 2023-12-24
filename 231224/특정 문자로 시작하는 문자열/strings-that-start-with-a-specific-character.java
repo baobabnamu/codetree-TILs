@@ -25,7 +25,7 @@ public class Main {
         int sum = 0;
         int cnt = 0;
         for(String s : strArr) {
-            if(s.startsWith(baseAlphabet)) {
+            if(s.charAt(0) == baseAlphabet.charAt(0)) {
                 sum += s.length();
                 cnt++;
             }
