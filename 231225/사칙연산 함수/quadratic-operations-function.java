@@ -4,6 +4,7 @@ import java.io.*;
 public class Main {
     public static void calcPrint(int a, char exp, int b) {
         int result = 0;
+        int flag = false;
         switch(exp) {
             case '*':
                 result = a*b;
@@ -19,9 +20,11 @@ public class Main {
                 break;
             default:
                 System.out.print("False");
+                flag = true;
         }
-
-        System.out.printf("%d %c %d = %d", a, exp, b, result);
+        if(!flag) {
+            System.out.printf("%d %c %d = %d", a, exp, b, result);
+        }
     }
 
     public static void main(String[] args) throws IOException {
