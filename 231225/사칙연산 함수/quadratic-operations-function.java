@@ -4,7 +4,7 @@ import java.io.*;
 public class Main {
     public static void calcPrint(int a, char exp, int b) {
         int result = 0;
-        int flag = false;
+        boolean flag = false;
         switch(exp) {
             case '*':
                 result = a*b;
