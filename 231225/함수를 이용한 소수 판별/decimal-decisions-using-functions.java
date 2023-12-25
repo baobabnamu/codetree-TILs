@@ -13,7 +13,7 @@ public class Main {
 
     public static int calcSum(int a, int b) {
         int sum = 0;
-        for(int i=2; i<=b; i++) {
+        for(int i=2; i<b; i++) {
             if(isPrime(i)) {
                 sum += i;
             } 
