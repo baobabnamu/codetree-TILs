@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Main {
     public static boolean checkSequence(int[] baseSequence, int[] subSequence) {
-        for(int i=0; i<baseSequence.length-subSequence.length; i++) {
+        for(int i=0; i<=baseSequence.length-subSequence.length; i++) {
             int cnt = 0;
             for(int j=0; j<subSequence.length; j++) {
                 if(baseSequence[i+j] == subSequence[j]) {
