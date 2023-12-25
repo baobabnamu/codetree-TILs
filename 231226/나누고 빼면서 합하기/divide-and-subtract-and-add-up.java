@@ -8,15 +8,15 @@ public class Main {
         int result = 0;
 
         while(m != 1) {
+            result += arr[m-1];
             if(m%2 == 1) {
                 m -= 1;
             } else {
                 m /= 2;
             }
-            result += arr[m-1];
         }
 
-        return result+arr[0];
+        return result + arr[0];
     }
 
     public static void main(String[] args) throws IOException {
