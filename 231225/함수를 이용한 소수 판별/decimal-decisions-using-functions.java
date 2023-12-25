@@ -13,7 +13,7 @@ public class Main {
 
     public static int calcSum(int a, int b) {
         int sum = 0;
-        for(int i=2; i<b; i++) {
+        for(int i=a; i<=b; i++) {
             if(isPrime(i)) {
                 sum += i;
             } 
@@ -27,7 +27,7 @@ public class Main {
         int a = Integer.parseInt(st.nextToken());
         int b = Integer.parseInt(st.nextToken());
 
-        int sum = calcSum(a, b);
+        int sum = a >= 2 ? calcSum(a, b) : 0;
         System.out.print(sum);
     }
 }
