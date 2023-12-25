@@ -5,7 +5,7 @@ public class Main {
     public static boolean checkMonth(int m, int d) {
         int[] months = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-        if(months[m] >= d) {
+        if(m <= 12 && months[m] >= d) {
             return true;
         }
 
