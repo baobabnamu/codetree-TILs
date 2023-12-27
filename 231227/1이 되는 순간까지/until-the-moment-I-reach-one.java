@@ -9,9 +9,9 @@ public class Main {
 
         if(n % 2 == 0) {
             return recursive(depth+1, n/2);
-        } 
-
-        return recursive(depth+1, n/3);
+        } else {
+            return recursive(depth+1, n/3);
+        }
     }
     
     public static void main(String[] args) throws IOException {
