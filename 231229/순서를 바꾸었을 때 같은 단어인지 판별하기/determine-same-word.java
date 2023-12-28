@@ -3,6 +3,10 @@ import java.io.*;
 
 public class Main {
     public static boolean compareChars(char[] a, char[] b) {
+        if(a.length != b.length) {
+            return false;
+        }
+
         Arrays.sort(a);
         Arrays.sort(b);
 
