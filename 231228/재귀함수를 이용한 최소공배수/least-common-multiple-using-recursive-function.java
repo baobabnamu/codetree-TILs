@@ -1,5 +1,5 @@
-import java.util.*;
 import java.io.*;
+import java.util.*;
 
 public class Main {
     public static int[] arr;
@@ -10,7 +10,6 @@ public class Main {
             m = n%m;
             n = temp;
         }
-
         return Math.abs(n);
     }
 
@@ -24,7 +23,7 @@ public class Main {
         if(idx < 0) {
             return lcm;
         }
-        
+
         lcm = calcLCM(arr[idx], lcm);
         return magicCalc(idx - 1, lcm);
     }
@@ -40,7 +39,6 @@ public class Main {
             arr[i] = temp;
         }
 
-        int lcm = magicCalc(n - 1, 1);
-        System.out.print(lcm);
+        System.out.print(magicCalc(n-1, 1));
     }
 }
