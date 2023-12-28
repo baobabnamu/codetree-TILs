@@ -12,7 +12,7 @@ public class Main {
         List<String> strList = new ArrayList<>();
         for(int i=0; i<n; i++) {
             String str = br.readLine();
-            if(str.length() > baseStr.length()) {
+            if(str.length() < baseStr.length()) {
                 continue;
             }
             String compareStr = str.substring(0, baseStr.length());
