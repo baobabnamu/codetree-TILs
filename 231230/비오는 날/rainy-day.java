@@ -41,7 +41,7 @@ public class Main {
             for(int i=1; i<rainIdxs.length; i++) { 
                 int curIdx = rainIdxs[i];
                 int compareIdx = answerIdx;
-                if(compare(datas[curIdx].date, datas[compareIdx].date)) { // true면 첫 번째 인자가 가까운 시일
+                if(datas[curIdx].date.compareTo(datas[compareIdx].date) < 0 ) { // true면 첫 번째 인자가 가까운 시일
                     answerIdx = curIdx;
                 }
             }
@@ -50,30 +50,30 @@ public class Main {
         return datas[answerIdx];
     }
 
-    public static boolean compare(String d1, String d2) {
-        int year_d1 = Integer.parseInt(d1.substring(0, 4));
-        int month_d1 = Integer.parseInt(d1.substring(5, 7));
-        int day_d1 = Integer.parseInt(d1.substring(8));
-        int year_d2 = Integer.parseInt(d2.substring(0, 4));
-        int month_d2 = Integer.parseInt(d2.substring(5, 7));
-        int day_d2 = Integer.parseInt(d2.substring(8));
+    // public static boolean compare(String d1, String d2) {
+    //     int year_d1 = Integer.parseInt(d1.substring(0, 4));
+    //     int month_d1 = Integer.parseInt(d1.substring(5, 7));
+    //     int day_d1 = Integer.parseInt(d1.substring(8));
+    //     int year_d2 = Integer.parseInt(d2.substring(0, 4));
+    //     int month_d2 = Integer.parseInt(d2.substring(5, 7));
+    //     int day_d2 = Integer.parseInt(d2.substring(8));
 
-        if(year_d1 < year_d2) {
-            return true;
-        } else if (year_d1 == year_d2) {
-            if(month_d1 < month_d2) {
-                return true;
-            } else if(month_d1 == month_d2) {
-                if(day_d1 < day_d2) {
-                    return true;
-                }
-                return false;
-            }
-            return false;
-        } else {
-            return false;
-        }
-    }
+    //     if(year_d1 < year_d2) {
+    //         return true;
+    //     } else if (year_d1 == year_d2) {
+    //         if(month_d1 < month_d2) {
+    //             return true;
+    //         } else if(month_d1 == month_d2) {
+    //             if(day_d1 < day_d2) {
+    //                 return true;
+    //             }
+    //             return false;
+    //         }
+    //         return false;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
