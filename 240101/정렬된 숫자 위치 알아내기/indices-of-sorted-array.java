@@ -1,10 +1,11 @@
-import java.util.*;
 import java.io.*;
+import java.util.*;
 
 class Number implements Comparable<Number> {
     int value, id;
 
     Number() {}
+
     public Number(int value, int id) {
         this.value = value;
         this.id = id;
@@ -24,14 +25,15 @@ public class Main {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         for(int i=0; i<n; i++) {
-            numbers[i] = new Number(Integer.parseInt(st.nextToken()), i + 1);
+            int temp = Integer.parseInt(st.nextToken());
+            numbers[i] = new Number(temp, i + 1);
         }
-       
+
         Arrays.sort(numbers);
-        
+
         int[] id_to_rank = new int[n];
         for(int i=0; i<n; i++) {
-            id_to_rank[numbers[i].id - 1] = (i+1);
+            id_to_rank[numbers[i].id - 1] = (i + 1);
         }
 
         for(int i=0; i<n; i++) {
