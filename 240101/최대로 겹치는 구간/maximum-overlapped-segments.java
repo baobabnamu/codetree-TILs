@@ -11,17 +11,9 @@ public class Main {
         for(int i=0; i<n; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
 
-            int start = Integer.parseInt(st.nextToken());
-            int end = Integer.parseInt(st.nextToken());
-
-            // 음수인 경우 양수로 변환
-            // 양수에는 무조건 100(offset) 더하기
-            start = start < 0 ? start * - 1 : start + 100;
-            end = end < 0 ? end * - 1 : end + 100;
-
-            if(start == end) {
-                lines[start] += 1;
-            }
+            // 100(offset) 더하기
+            int start = Integer.parseInt(st.nextToken()) + 100;
+            int end = Integer.parseInt(st.nextToken()) + 100; 
 
             for(int j=start; j<end; j++) {
                 lines[j] += 1;
