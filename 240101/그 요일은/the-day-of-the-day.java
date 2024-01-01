@@ -7,7 +7,7 @@ public class Main {
 
         int days = d;
         for(int i=1; i<m; i++) {
-            days += monthOfdays[1];
+            days += monthOfdays[i];
         }
 
         return days;
