@@ -18,7 +18,11 @@ public class Main {
             // 양수에는 무조건 100(offset) 더하기
             start = start < 0 ? start * - 1 : start + 100;
             end = end < 0 ? end * - 1 : end + 100;
-            
+
+            if(start == end) {
+                lines[start] += 1;
+            }
+
             for(int j=start; j<end; j++) {
                 lines[j] += 1;
             }
