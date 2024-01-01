@@ -6,7 +6,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String binary = br.readLine();
         int n = 0;
-        int[] digits = new int[10];
+        int[] digits = new int[11];
         int cnt = 0;
 
         for(int i=0; i<binary.length(); i++) {
