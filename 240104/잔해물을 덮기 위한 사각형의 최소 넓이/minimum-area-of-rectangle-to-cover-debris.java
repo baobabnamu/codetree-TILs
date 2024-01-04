@@ -32,9 +32,9 @@ public class Main {
         maxX -= 1000;
         maxY -= 1000;
 
-        area = ((maxX + 1) - minX) * ((maxY + 1) - minY);
+        area = ((maxX + 1) - minX) * ((maxY + 1) - minY);       
 
-        return area;
+        return area == 4000000 ? 0 : area;
         // return 0;
     }
 
