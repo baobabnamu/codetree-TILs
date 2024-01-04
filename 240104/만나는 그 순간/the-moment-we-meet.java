@@ -42,7 +42,7 @@ public class Main {
 
         int ans = -1;
         for(int i=1; i<MAX_T; i++) {
-            if(aLog[i] == bLog[i]) {
+            if(aLog[i] != 0 && aLog[i] == bLog[i]) {
                 ans = i;
                 break;
             }
