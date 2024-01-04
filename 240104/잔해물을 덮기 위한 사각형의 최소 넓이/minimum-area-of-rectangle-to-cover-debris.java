@@ -10,15 +10,12 @@ public class Main {
     public static int calcRect() {
         // 남은 1번째 사각형의 최대 행 값 - 최소 행 값 * 최대 열 값 - 최소 열 값을 구해야 함.
         int area = 0;
-
-        int minX = 2001;
-        int maxX = 0;
-        int minY = 2001;
-        int maxY = 0;
-
-        for(int i=0; i<place.length - 1; i++) {
-            for(int j=0; j<place.length - 1; j++) {
+        int minX = MAX_R, maxX = 0, minY = MAX_R, maxY = 0;
+        boolean firstRectExist = false;
+        for(int i=0; i<MAX_R; i++) {
+            for(int j=0; j<MAX_R; j++) {
                 if(place[i][j] == 1) {
+                    firstRectExist = true;
                     minX = Math.min(minX, i);
                     maxX = Math.max(maxX, i);
                     minY = Math.min(minY, j);
@@ -27,15 +24,10 @@ public class Main {
             }
         }
 
-        minX -= 1000;
-        minY -= 1000;
-        maxX -= 1000;
-        maxY -= 1000;
+        if(firstRectExist) 
+            area = ((maxX + 1) - minX) * ((maxY + 1) - minY);       
 
-        area = ((maxX + 1) - minX) * ((maxY + 1) - minY);       
-
-        return area == 4000000 ? 0 : area;
-        // return 0;
+        return area;
     }
 
     public static void addRect(int x1, int y1, int x2, int y2, boolean isTwo) {
