@@ -11,16 +11,16 @@ public class Main {
         int k = Integer.parseInt(stk.nextToken());
 
         int[] students = new int[n + 1];
-
-        for(int i=0; i<m; i++) {
-            int penalty = Integer.parseInt(br.readLine());
-            students[penalty]++;
-        }
+        int idx = 0;
 
         int ans = -1;
-        for(int i=1; i<students.length; i++)
-            if(students[i] >= k) ans = i;
+        for(int i=0; i<m; i++) {
+            int penaltyStudentNumber = Integer.parseInt(br.readLine());
+            students[penaltyStudentNumber]++;
 
+            if(students[penaltyStudentNumber] >= k)
+                ans = penaltyStudentNumber;
+        }
         System.out.print(ans);
     }
 }
