@@ -18,8 +18,11 @@ public class Main {
             int penaltyStudentNumber = Integer.parseInt(br.readLine());
             students[penaltyStudentNumber]++;
 
-            if(students[penaltyStudentNumber] >= k)
+            if(students[penaltyStudentNumber] >= k) {
                 ans = penaltyStudentNumber;
+                break;
+            }
+                
         }
         System.out.print(ans);
     }
