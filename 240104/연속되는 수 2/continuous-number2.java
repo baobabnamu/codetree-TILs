@@ -12,14 +12,10 @@ public class Main {
 
         int cnt = 0;
         int maxCnt = 1;
-        for(int i=0; i<n; i++) {
-            if(i == 0 || nums[i] == nums[i-1]) {
-                cnt++;
-            } else if(nums[i] != nums[i-1]) {
-                maxCnt = Math.max(cnt, maxCnt);
-            }
-        }
+        for(int i=0; i<n; i++)
+            if(i == 0 || nums[i] == nums[i-1]) cnt++;
 
+        maxCnt = Math.max(cnt, maxCnt);
         System.out.print(maxCnt);
     }
 }
