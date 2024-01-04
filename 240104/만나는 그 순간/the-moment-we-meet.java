@@ -74,13 +74,15 @@ public class Main {
 
         // 4. 동시에 배열 인덱스 순회하면서 만나는 인덱스가 곧 정답
         // index는 초, value는 현재 A(혹은 B)의 위치
+        boolean isMeet = false;
         for(int i=1; i<len + 1; i++) {
             if(aLogs[i] == bLogs[i]) {
+                isMeet = true;
                 System.out.print(i);
                 break;
             }
         }
 
-        System.out.print("-1");
+        if(!isMeet) System.out.print("-1");
     }
 }
