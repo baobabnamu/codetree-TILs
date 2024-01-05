@@ -66,8 +66,8 @@ public class Main {
             persons[x].count++;
             persons[y].count++;
 
-            if(persons[x].count <= K) persons[y].sick = 1;
-            if(persons[y].count <= K) persons[x].sick = 1;
+            if(persons[x].count <= K && persons[x].sick == 1) persons[y].sick = 1;
+            if(persons[y].count <= K && persons[y].sick == 1) persons[x].sick = 1;
         }
 
         // 5. 사람 클래스 배열 순회해서 감염여부 반환
