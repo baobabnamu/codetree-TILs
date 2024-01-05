@@ -19,11 +19,13 @@ public class Main {
         // 1. A, B 기록
         int[] aLog = new int[MAX_R];
         int aIdx = 0;
+        int aLen = 0;
 
         for(int i=0; i<n; i++) {
             stk = new StringTokenizer(br.readLine());
             int t = Integer.parseInt(stk.nextToken());
             char d = stk.nextToken().charAt(0);
+            aLen += t;
 
             while(t-- > 0) {
                 if(d == 'L') {
@@ -34,16 +36,15 @@ public class Main {
             }
         }
 
-        // 주의 : 로봇이 멈춘 경우, 그 뒤에 모든 위치는 마지막 로봇 위치.
-        for(int i=aIdx; i<1000; i++) aLog[i] = aLog[aIdx]; 
-
         int[] bLog = new int[MAX_R];
         int bIdx = 0;
+        int bLen = 0;
 
         for(int i=0; i<m; i++) {
             stk = new StringTokenizer(br.readLine());
             int t = Integer.parseInt(stk.nextToken());
             char d = stk.nextToken().charAt(0);
+            bLen += t;
 
             while(t-- > 0) {
                 if(d == 'L') {
@@ -54,13 +55,14 @@ public class Main {
             }
         }
 
-        // 주의 : 마지막 로봇 위치로 변경
-        for(int i=bIdx; i<MAX_R; i++) bLog[i] = bLog[bIdx]; 
+        int len = aLen > bLen ? aLen : bLen;
+        for(int i=aIdx; i<len; i++) aLog[i] = aLog[aIdx]; 
+        for(int i=bIdx; i<len; i++) bLog[i] = bLog[bIdx]; 
 
         // 2. A, B 순회하면서 조건에 맞는 경우의 수 카운팅
         // 조건 : A-1 != B-1 && A == B
         int ans = 0;
-        for(int i=1; i<MAX_R; i++) {
+        for(int i=1; i<len; i++) {
             if(aLog[i-1] != bLog[i-1] && aLog[i] == bLog[i]) {
                 ans++;
             }
