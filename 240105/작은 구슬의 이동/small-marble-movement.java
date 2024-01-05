@@ -51,6 +51,6 @@ public class Main {
             }
         }
 
-        System.out.printf("답 : %d %d", nx + 1, ny + 1); // 2차원 배열에서 문제의 격자 구조에 맞게 + 1
+        System.out.printf("%d %d", nx + 1, ny + 1); // 2차원 배열에서 문제의 격자 구조에 맞게 + 1
     }
 }
