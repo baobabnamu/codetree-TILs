@@ -38,7 +38,7 @@ public class Main {
 
         // 첫 번째 환자
         persons[P].sick = 1; 
-
+        
         // 3. 시간 2차원 배열 (행:시간, 열:X, Y) 어느 시간에 누가 악수했는지 관리
         int[][] timeTable = new int[MAX_TIME + 1][MAX_TIME + 1];
         int startTime = MAX_TIME;
@@ -61,8 +61,10 @@ public class Main {
             int x = timeTable[i][0];
             int y = timeTable[i][1];
 
-            persons[x].count += 1;
-            persons[y].count += 1;
+            if(x==0 || y==0) continue;
+
+            persons[x].count++;
+            persons[y].count++;
 
             if(persons[x].count <= K) persons[y].sick = 1;
             if(persons[y].count <= K) persons[x].sick = 1;
