@@ -11,19 +11,19 @@ public class Main {
         int ny = 0;
 
         // 시계방향
-        int[] dx = {0, 1, 0, -1};
-        int[] dy = {-1, 0, 1, 0};
+        int[] dx = new int[]{0, 1, 0, -1};
+        int[] dy = new int[]{1, 0, -1, 0};
 
-        int dIdx = 0;
+        int dirNum = 0;
 
         for(char command : commandsToCharArr) {
             if(command == 'L') {
-                dIdx = (dIdx - 1 + 4) % 4;
+                dirNum = (dirNum - 1 + 4) % 4;
             } else if (command == 'R') {
-                dIdx = (dIdx + 1) % 4;
+                dirNum = (dirNum + 1) % 4;
             } else {
-                nx += dx[dIdx];
-                ny += dy[dIdx];
+                nx += dx[dirNum];
+                ny += dy[dirNum];
             }
         }
 
