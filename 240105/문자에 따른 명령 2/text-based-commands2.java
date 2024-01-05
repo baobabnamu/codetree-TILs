@@ -14,7 +14,7 @@ public class Main {
         int[] dx = new int[]{1, 0, -1, 0};
         int[] dy = new int[]{0, -1, 0, 1};
 
-        int dirNum = 0;
+        int dirNum = 3;
 
         for(char command : commandsToCharArr) {
             if(command == 'L') {
