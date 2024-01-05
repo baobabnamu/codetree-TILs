@@ -67,6 +67,7 @@ public class Main {
             // x는 감염되어 있는데 y는 감염 안 되어있는 경우
             // y는 감염되어 있는데 x는 감염 안 되어있는 경우
             // 둘 다 감염되어 있는 경우
+            // x, y 둘 다 감염이 안 되어있는 우
             if(persons[x].sick == 1 && persons[y].sick == 0) {
                 if(persons[x].count < K) {
                     persons[y].sick = 1;
@@ -77,7 +78,7 @@ public class Main {
                     persons[x].sick = 1;
                     persons[y].count++;
                 }
-            } else {
+            } else if(persons[x].sick == 0 && persons[y].sick == 0) {
                 persons[x].count++;
                 persons[y].count++;
             }
