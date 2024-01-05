@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static final int MAX_R = 1000000;
+    public static final int MAX_R = 1000000 + 1;
 
     public static void main(String[] args) throws IOException {
         // 로봇 A와 B의 위치가 바로 직전에는 다른 위치에 있다가 그 다음번에 같은 위치에 오게되는 경우의 수
