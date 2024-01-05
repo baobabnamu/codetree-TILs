@@ -55,6 +55,9 @@ public class Main {
             if(firstLog[i] != firstLog[i-1]) ans++;
         }
 
+        // 선두가 한 번도 바뀐 적이 없다면 초깃값
+        if(ans == -1) ans = 0;
+
         System.out.print(ans);
     }
 }
