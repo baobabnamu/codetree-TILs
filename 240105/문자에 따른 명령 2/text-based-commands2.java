@@ -11,8 +11,8 @@ public class Main {
         int ny = 0;
 
         // 시계방향
-        int[] dx = new int[]{0, 1, 0, -1};
-        int[] dy = new int[]{1, 0, -1, 0};
+        int[] dx = new int[]{1, 0, -1, 0};
+        int[] dy = new int[]{0, -1, 0, 1};
 
         int dirNum = 0;
 
