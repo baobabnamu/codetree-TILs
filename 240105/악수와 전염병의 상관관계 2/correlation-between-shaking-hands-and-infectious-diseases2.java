@@ -78,7 +78,7 @@ public class Main {
                     persons[x].sick = 1;
                     persons[y].count++;
                 }
-            } else if(persons[x].sick == 0 && persons[y].sick == 0) {
+            } else if(persons[x].sick == 1 && persons[y].sick == 1) {
                 persons[x].count++;
                 persons[y].count++;
             }
