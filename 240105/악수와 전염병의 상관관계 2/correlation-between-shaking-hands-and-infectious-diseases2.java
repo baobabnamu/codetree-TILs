@@ -63,11 +63,24 @@ public class Main {
 
             if(x==0 || y==0) continue;
 
-            persons[x].count++;
-            persons[y].count++;
 
-            if(persons[x].count <= K && persons[x].sick == 1) persons[y].sick = 1;
-            if(persons[y].count <= K && persons[y].sick == 1) persons[x].sick = 1;
+            // x는 감염되어 있는데 y는 감염 안 되어있는 경우
+            // y는 감염되어 있는데 x는 감염 안 되어있는 경우
+            // 둘 다 감염되어 있는 경우
+            if(persons[x].sick == 1 && persons[y].sick == 0) {
+                if(persons[x].count < K) {
+                    persons[y].sick = 1;
+                    persons[x].count++;
+                }
+            } else if(persons[x].sick == 0 && persons[y].sick == 1) {
+                if(persons[y].count < K) {
+                    persons[x].sick = 1;
+                    persons[y].count++;
+                }
+            } else {
+                persons[x].count++;
+                persons[y].count++;
+            }
         }
 
         // 5. 사람 클래스 배열 순회해서 감염여부 반환
