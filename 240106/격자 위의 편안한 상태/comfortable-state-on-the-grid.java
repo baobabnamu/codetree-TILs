@@ -36,7 +36,7 @@ public class Main {
                 }
             }
 
-            if(cnt >= 3) status = 1;
+            if(cnt == 3) status = 1;
             System.out.printf("%d\n", status);
         }
     }
