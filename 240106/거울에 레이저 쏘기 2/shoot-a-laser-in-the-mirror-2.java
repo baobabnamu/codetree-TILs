@@ -34,24 +34,24 @@ public class Main {
         // 이때, 초기 방향 설정은 1~3, 4~6, 7~9, 10~12가 각자 다름 (하, 좌, 상, 우) 순서임.
         int k = Integer.parseInt(br.readLine());
 
-        int startRow = 0, startCol = 0, rectLen = n/4, dirNum = 0; // rectLen : 사각형 한 면의 길이
+        int startRow = 0, startCol = 0, dirNum = 0;
         int[] dx = {0, 1, 0, -1}; // R D L U
         int[] dy = {1, 0, -1, 0};
 
-        if(k <= rectLen * 1) {
+        if(k <= n * 1) {
             startRow = 0; 
             startCol = k - 1; 
             dirNum = 1;
-        } else if(k <= rectLen * 2) {
-            startRow = Math.abs((rectLen + 1) - k); 
+        } else if(k <= n * 2) {
+            startRow = Math.abs((n + 1) - k); 
             startCol = n - 1; 
             dirNum = 2;
-        } else if(k <= rectLen * 3) {
+        } else if(k <= n * 3) {
             startRow = n - 1; 
-            startCol = (rectLen * 3) - k; 
+            startCol = (n * 3) - k; 
             dirNum = 3;
-        } else if(k <= rectLen * 4) {
-            startRow = (rectLen * 4) - k; 
+        } else if(k <= n * 4) {
+            startRow = (n * 4) - k; 
             startCol = 0; 
             dirNum = 0;
         }
@@ -59,7 +59,7 @@ public class Main {
         // 3. 치환된 인덱스 기준으로 '/' -> 시계방향 , '\' -> 반시계방향으로 회전하고 한 칸 가기
         // 로직 (거울 체크 -> 방향 회전 -> 한 칸 이동) 반복하다가 벗어난 경우 break
         boolean isEscape = false;
-        int x = startRow, y = startCol, cnt = 1;
+        int x = startRow, y = startCol, cnt = 0;
         while(!isEscape) {
             dirNum = mirrorCheck(rect[x][y], dirNum);
             int nx = x + dx[dirNum];
