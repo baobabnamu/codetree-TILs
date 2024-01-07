@@ -1,44 +1,47 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static int n;
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        n = Integer.parseInt(br.readLine());
-        int[][] rect = new int[n][n];
-
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         int[] dx = {0, -1, 0, 1};
         int[] dy = {1, 0, -1, 0};
-        int dirNum = 0;
-
-        int x = n / 2, y = n / 2;
-        rect[x][y] = 1;
-
-        int value = 2, move = 1, moveCnt = 0;
-        while(value <= n * n) {
-            moveCnt++;
-            
-            for(int j=0; j<move; j++) {
-                if(value > n * n) break;
-                x += dx[dirNum];
-                y += dy[dirNum];
-                rect[x][y] = value++;
+        int n = Integer.parseInt(bufferedReader.readLine());
+        int[][] matrix = new int[n][n];
+        int curRow = (n - 1) / 2;
+        int curCol = (n - 1) / 2;
+        matrix[curRow][curCol] = 1;
+        int cycle = 1;
+        int dir = 0;
+        int distance = 1;
+        while (cycle < n * n) {
+            for (int i = 0; i < distance; i += 2) {
+                if (cycle == n * n) {
+                    break;
+                }
+                int nextRow = curRow + dx[dir];
+                int nextCol = curCol + dy[dir];
+                matrix[nextRow][nextCol] = matrix[curRow][curCol] + 1;
+                curRow = nextRow;
+                curCol = nextCol;
+                cycle++;
             }
-
-            dirNum = (dirNum + 1) % 4; // move 값을 다 사용하면 방향 변경
-
-            if(moveCnt >= 2) {
-                move++;
-                moveCnt = 0;
+            if (dir == 3) {
+                dir = 0;
+            } else {
+                dir++;
             }
+            distance++;
         }
-
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<n; j++)
-                System.out.printf("%d ", rect[i][j]);
-            System.out.println();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int[] row : matrix) {
+            for (int point : row) {
+                stringBuilder.append(point).append(" ");
+            }
+            stringBuilder.append(System.lineSeparator());
         }
+        System.out.println(stringBuilder);
     }
 }
