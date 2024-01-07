@@ -16,7 +16,7 @@ public class Main {
         int x = n / 2, y = n / 2;
         rect[x][y] = 1;
 
-        int value = 2, int move = 1;
+        int value = 2, move = 1;
         while(value <= n * n) {
             for(int i=0; i<2; i++) {
                 for(int j=0; j<move; j++) {
