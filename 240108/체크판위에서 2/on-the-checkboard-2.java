@@ -28,14 +28,14 @@ public class Main {
                 // i, j와 비교 대상은 k, l
                 for(int k = i + 1; k < R - 1; k++) {
                     for(int l = j + 1; l < C - 1; l++) {
-                        if(rect[i][j] != rect[k][l]) {
-                            cnt++;
-                        }
+                        if(rect[0][0] != rect[i][j] && 
+                            rect[i][j] != rect[k][l] &&
+                            rect[k][l] != rect[R - 1][C - 1]) cnt++;
                     }
                 }
             }
         }
 
-        System.out.print(cnt/2);
+        System.out.print(cnt);
     }
 }
