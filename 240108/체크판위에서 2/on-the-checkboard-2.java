@@ -23,8 +23,8 @@ public class Main {
         // 주의1 : 시작 지점은 0, 0을 말하며 도착 지점은 R - 1, C - 1이다.
 
         int cnt = 0;
-        for(int i = 0; i < R; i++) {
-            for(int j = 0; j < C; j++) {
+        for(int i = 1; i < R; i++) {
+            for(int j = 1; j < C; j++) {
                 // i, j와 비교 대상은 k, l
                 for(int k = i + 1; k < R - 1; k++) {
                     for(int l = j + 1; l < C - 1; l++) {
