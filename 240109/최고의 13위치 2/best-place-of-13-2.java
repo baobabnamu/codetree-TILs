@@ -26,12 +26,16 @@ public class Main {
             }
         }
 
+        boolean isVisited = false;
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < n - 2; j++) {
+                if(isVisited) break;
+
                 if(maxCoin1 == grid[i][j] + grid[i][j + 1] + grid[i][j + 2]) {
                     visited[i][j] = 1;
                     visited[i][j + 1] = 1;
                     visited[i][j + 2] = 1;
+                    isVisited = true;
                 }
             }
         }
