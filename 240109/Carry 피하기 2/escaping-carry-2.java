@@ -13,23 +13,18 @@ public class Main {
         int max = -1;
         for(int i = 0; i < n; i++) {
             int baseNum = nums[i];
-                for(int j = 0; j < n; j++) {
-                    if(i != j && !isCarry(nums[i], nums[j])) {
+                for(int j = i + 1; j < n; j++) {
+                    if(!isCarry(nums[i], nums[j])) {
                         int tempNums = nums[i] + nums[j];
-                        for(int k = 0; k < n; k++) {
-                            if(i != k && j != k && !isCarry(tempNums, nums[k])) {
+                        for(int k = j + 1; k < n; k++) {
+                            if(!isCarry(tempNums, nums[k]))
                                 max = Math.max(max, tempNums + nums[k]);
-                            }  
                        }
                     }
                 }
         }
 
         System.out.print(max);
-
-        // 캐리 발생 여부 함수를 for문 마다 if문으로 조건 걸기.
-        // 캐리 발생 안한 값이 산출될 때마다 max 값 갱신하기.
-        // max 값의 초기 값은 -1로.
     }
 
     public static boolean isCarry(int n1, int n2) {
