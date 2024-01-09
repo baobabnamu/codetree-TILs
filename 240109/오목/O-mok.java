@@ -29,6 +29,9 @@ public class Main {
                     while(true) {
                         if(cnt >= 5) {
                             System.out.println(grid[i][j]);
+                            // 특정 지점에서 특정 방향으로 오목 완성 시
+                            // 현재 값(i, j) 기준 완성된 방향으로 2칸 이동
+                            // 2칸 이동 후 문제에서 index가 아닌 행, 렬로 표현하고 있으므로 +1
                             System.out.print((i + 2 * dx[dirNum] + 1) + " " + (j + 2 * dy[dirNum] + 1));
                             return;
                         }
