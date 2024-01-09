@@ -36,6 +36,8 @@ public class Main {
     }
 
     public static boolean isEqualBox(int x1, int y1, int x2, int y2) {
-        return x1 == x2 && y1 == y2 && y1 + 1== y2 + 1 && y1 + 2 == y2 + 2;
+        // 행이 똑같으면서 y1과 y2의 거리가 2이하 일때
+        // 거리 2이하인 기준은 격자의 크기가 3이기 때문
+        return x1 == x2 && Math.abs(y1 - y2) <= 2;
     }
 }
