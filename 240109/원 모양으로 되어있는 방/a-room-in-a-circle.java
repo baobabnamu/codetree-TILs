@@ -7,16 +7,17 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
         int[] rooms = new int[N];
 
-        for(int i = 0; i < N; i++)
+        for(int i = 0; i < N; i++) {
             rooms[i] = Integer.parseInt(br.readLine());
+        }
 
         int min = Integer.MAX_VALUE;
         for(int i = 0; i < N; i++) {
             int startRoom = i;
             int distance = 0;
             for(int j = 0; j < N; j++) {
-                int curRoom = (startRoom + j) % 5;
-                distance += rooms[curRoom] * j;               
+                int curRoom = (startRoom + j) % N;
+                distance += rooms[curRoom] * j;
             }
             min = Math.min(min, distance);
         }
