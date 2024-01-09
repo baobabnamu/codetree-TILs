@@ -26,7 +26,6 @@ public class Main {
             int distance = 0;
             for(int j = 0; j < N - 1; j++)
                 distance += Math.abs(xArr[j] - xArr[j + 1]) + Math.abs(yArr[j] - yArr[j + 1]);
-            System.out.println(distance);
             min = Math.min(min, distance);
 
             xArr[i] = xTemp;
