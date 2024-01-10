@@ -9,12 +9,24 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
         nums = new double[N];
 
+        double sum = 0;
         StringTokenizer stk = new StringTokenizer(br.readLine());
-        for(int i = 0; i < N; i++) 
+        for(int i = 0; i < N; i++) {
             nums[i] = Double.parseDouble(stk.nextToken());
-
+            sum += nums[i];
+        }
+        
         int ans = N;
-        int k = 1;
+
+        double avgTotal = sum / N;
+        for(int i = 0; i < N; i++) {
+            if(avgTotal == nums[i]) {
+                ans++;
+                break;
+            }
+        }
+
+        int k = 2;
         while(k <= N) {
             for(int i = 0; i <= N - k; i++) {
                 double avg = calcAvg(i, k);
