@@ -10,11 +10,11 @@ public class Main {
         nums = new double[N];
 
         StringTokenizer stk = new StringTokenizer(br.readLine());
-        for(int i = 0; i < N; i++)
+        for(int i = 0; i < N; i++) 
             nums[i] = Double.parseDouble(stk.nextToken());
-        
+
         int ans = N;
-        int k = 2;
+        int k = 1;
         while(k <= N) {
             for(int i = 0; i <= N - k; i++) {
                 double avg = calcAvg(i, k);
@@ -27,6 +27,8 @@ public class Main {
             }
             k++;
         }
+
+
 
         System.out.print(ans);
     }
