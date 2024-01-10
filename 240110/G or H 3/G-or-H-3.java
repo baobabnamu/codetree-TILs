@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Main {
     private static final int INT_MIN = Integer.MIN_VALUE;
+    private static int MAX_L = 10000;
 
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -13,15 +14,14 @@ public class Main {
         int[] locations = new int[N];
         int[] alphabets = new int[N];
 
-        int len = 0;
         for(int i = 0; i < N; i++) {
             stk = new StringTokenizer(br.readLine());
             locations[i] = Integer.parseInt(stk.nextToken());
             char alphabet = stk.nextToken().charAt(0);
             alphabets[i] = alphabet == 'G' ? 1 : 2;
-            len = Math.max(len, locations[i]);
         }
 
+        int len = MAX_L;
         int[] lines = new int[len];
         for(int i = 0; i < locations.length; i++)
             lines[locations[i] - 1] = alphabets[i];
