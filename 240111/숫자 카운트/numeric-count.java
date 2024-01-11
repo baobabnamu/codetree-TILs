@@ -43,6 +43,7 @@ public class Main {
 
                         if(strike != strikes[m] || ball != balls[m]) {
                             isSuccessed = false;
+                            break;
                         }
                     }
 
