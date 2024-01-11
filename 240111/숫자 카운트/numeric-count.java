@@ -39,11 +39,10 @@ public class Main {
 
                         if(num100 == j || num100 == k) ball++;
                         if(num10 == i || num10 == k) ball++;
-                        if(num1 == i || num1 == k) ball++;
+                        if(num1 == i || num1 == j) ball++;
 
                         if(strike != strikes[m] || ball != balls[m]) {
                             isSuccessed = false;
-                            break;
                         }
                     }
 
