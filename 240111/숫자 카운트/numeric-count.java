@@ -24,7 +24,7 @@ public class Main {
                 for(int k = 1; k <= 9; k++) {
                     if(i == j || i == k || j == k) continue;
 
-                    boolean isSuccessed = false;
+                    boolean isSuccessed = true;
                     for(int m = 0; m < N; m++) {
                         int strike = 0, ball = 0;
                         int num100 = nums[m] / 100;
@@ -39,8 +39,8 @@ public class Main {
                         if(num10 == i || num10 == k) ball++;
                         if(num1 == i || num1 == j) ball++;
 
-                        if(strikes[m] == strike && balls[m] == ball) {
-                            isSuccessed = true;
+                        if(strikes[m] != strike || balls[m] != ball) {
+                            isSuccessed = false;
                             break;
                         }
                     }
