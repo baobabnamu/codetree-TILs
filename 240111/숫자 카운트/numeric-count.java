@@ -30,7 +30,7 @@ public class Main {
                         int strike = 0, ball = 0;
 
                         int num100 = nums[m] / 100;
-                        int num10 = (nums[m] % 100) / 10;
+                        int num10 = (nums[m] / 10) % 10;
                         int num1 = nums[m] % 10;
 
                         if(i == num100) strike++;
