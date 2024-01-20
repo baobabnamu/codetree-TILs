@@ -20,14 +20,13 @@ public class Main {
 
         int ans = 0;
         for(int i = 0; i < N; i++) {
-            for(int j = 0; j < N; j++) {
-                for(int k = 0; k < N; k++) {
-                    if(i == j && i == k && j == k) continue;
+            for(int j = i + 1; j < N; j++) {
+                for(int k = j + 1; k < N; k++) {
+                    int x1 = xPoints[i], y1 = yPoints[i];
+                    int x2 = xPoints[j], y2 = yPoints[j];
+                    int x3 = xPoints[k], y3 = yPoints[k];
 
-                    if(yPoints[i] == yPoints[j] && xPoints[j] == xPoints[k]) {
-                        int x1 = xPoints[i], y1 = yPoints[i];
-                        int x2 = xPoints[j], y2 = yPoints[j];
-                        int x3 = xPoints[k], y3 = yPoints[k];
+                    if(isParalled(x1, x2, x3, y1, y2, y3)) {
                         int temp = Math.abs(((x1 * y2) + (x2 * y3) + (x3 * y1)) - ((x2 * y1) + (x3 * y2) + (x1 * y3))) / 2;
                         ans = Math.max(ans, temp);
                     }
@@ -41,5 +40,9 @@ public class Main {
         // -> x 축 평행 조건 : x 축이 평행하려면 세 개의 점 중 1번째 점(x,y)의 y와 2번째 점(x,y)의 y가 같아야 한다.
         // -> y 축 평행 조건 : y 축이 평행하려면 세 개의 점 중 3번째 점(x,y)의 x와 3번째 점(x,y)의 x가 같아야 한다.
         // 그 중에서 제일 큰 넓이에 2를 곱한 값은?
+    }
+
+    private static boolean isParalled(int x1, int x2, int x3, int y1, int y2, int y3) {
+        return (x1 == x2 || x1 == x3 || x2 == x3) && (y1 == y2 || y1 == y3 || y2 == y3);
     }
 }
