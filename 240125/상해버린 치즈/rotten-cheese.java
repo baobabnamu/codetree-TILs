@@ -1,78 +1,87 @@
-import java.io.*;
 import java.util.*;
 
+class Info1 {
+    int p, m, t;
+
+    public Info1(int p, int m, int t) {
+        this.p = p;
+        this.m = m;
+        this.t = t;
+    }
+}
+
+class Info2 {
+    int p, t;
+
+    public Info2(int p, int t) {
+        this.p = p;
+        this.t = t;
+    }
+}
+
 public class Main {
-    private static int N, M, D, S;
-    private static int[][] cheezeRecord, sickRecord;
-    private static int[] personStatus;
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer stk = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(stk.nextToken());
-        M = Integer.parseInt(stk.nextToken());
-        D = Integer.parseInt(stk.nextToken());
-        S = Integer.parseInt(stk.nextToken());
+    public static final int MAX_N = 50;
+    public static final int MAX_D = 1000;
 
-        cheezeRecord = new int[D][3];
-        for(int i = 0; i < D; i++) {
-            stk = new StringTokenizer(br.readLine());
-            cheezeRecord[i][0] = Integer.parseInt(stk.nextToken()); // 몇 번째 사람
-            cheezeRecord[i][1] = Integer.parseInt(stk.nextToken()); // 몇 번째 치즈
-            cheezeRecord[i][2] = Integer.parseInt(stk.nextToken()); // t초에 먹었는가
+    public static int n, m, d, s;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        m = sc.nextInt();
+        d = sc.nextInt();
+        s = sc.nextInt();
+
+        Info1[] info1 = new Info1[MAX_D];
+        Info2[] info2 = new Info2[MAX_N];
+
+        for(int i = 0; i < d; i++) {
+            int p = sc.nextInt();
+            int m = sc.nextInt();
+            int t = sc.nextInt();
+            info1[i] = new Info1(p, m, t);
         }
 
-        sickRecord = new int[S][2];
-        for(int i = 0; i < S; i++) {
-            stk = new StringTokenizer(br.readLine());
-            sickRecord[i][0] = Integer.parseInt(stk.nextToken()); // 몇 번째 사람
-            sickRecord[i][1] = Integer.parseInt(stk.nextToken()); // t초에 아팠는가
-        }
-
-        if(M == 1) {
-            System.out.print(N);
-            return;
+        for(int i = 0; i < s; i++) {
+            int p = sc.nextInt();
+            int t = sc.nextInt();
+            info2[i] = new Info2(p, t);
         }
 
         int ans = 0;
-        personStatus = new int[N];
-        int[] spoiledCheeze = new int[M + 1]; // 상할 가능성이 있는 치즈
-        for(int i = 0; i < S; i++) {
-            int sickPerson = sickRecord[i][0];
-            int sickTime = sickRecord[i][1];
+        // i 번째 치즈가 상했을 때 필요한 약의 개수
+        for(int i = 1; i <= m; i++) {
 
-            for(int j = 0; j < D; j++) {
-                int cheezePerson = cheezeRecord[j][0];
-                int cheezeType = cheezeRecord[j][1];
-                int cheezeTime = cheezeRecord[j][2];
+            int[] time = new int[MAX_N + 1];
+            for(int j = 0; j < d; j++) {
+                // 치즈 타입(i가 아닌 경우)이 다른 경우 넘어감
+                if(info1[j].m != i) continue;
 
-                if(sickPerson == cheezePerson && sickTime > cheezeTime) {
-                    spoiledCheeze[cheezeType]++;
+                int person = info1[j].p;
+                if(time[person] == 0) {
+                    time[person] = info1[j].t;
+                } else if(time[person] > info1[j].t) {
+                    time[person] = info1[j].t;
                 }
             }
+
+            boolean possible = true;
+            for(int j = 0; j < s; j++) {
+                int person = info2[j].p;
+                if(time[person] == 0) possible = false;
+                if(time[person] >= info2[j].t) possible = false;
+            }
+
+            int pill = 0;
+            if(possible) {
+                for(int j = 1; j <= n; j++) {
+                    if(time[j] != 0) pill++;
+                }
+            }
+
+            ans = Math.max(ans, pill);
         }
 
-        int[] spoiledCheezeAtePersons = new int[M + 1];
-        for(int i = 0; i < D; i++) {
-            int cheezePerson = cheezeRecord[i][0];
-            int cheezeType = cheezeRecord[i][1];
-            int cheezeTime = cheezeRecord[i][2];
-
-            if(spoiledCheeze[cheezeType] == sickRecord.length) {
-                spoiledCheezeAtePersons[cheezeType]++;
-            }   
-        }
-
-        Arrays.sort(spoiledCheezeAtePersons);
-
-        System.out.print(spoiledCheezeAtePersons[spoiledCheezeAtePersons.length - 1]);
-        
-
-        // 조건 1 : 아픈 사람들이 먹었던 치즈 타입이여야 함
-        // 조건 2 : 아픈 시간 보다 더 예전에 먹었던 치즈여야 함
-
-        // 1. 아픈 사람들이 누구누구 있는지 찾고, 언제 아팠는지 찾기, *아픈 사람들의 기록의 길이가 곧 아픈 사람의 수임
-        // 2. 아픈 사람들 중 아픈 사람을 한 명을 선택하여 아픈 사람이 아팠던 시점 전에 먹었던 치즈 타입을 1씩 증가하면서 아픈 사람들 배열 순회
-        // 3. 아픈 사람들 배열 순회 후 아픈 사람들의 기록의 길이와 동일한 치즈 타입 값이 있다면 그건 상한 치즈임(일 수 있음)
-        // 4. 상한 치즈를 먹은 사람들의 최대 수를 카운팅
+        System.out.print(ans);
     }
 }
