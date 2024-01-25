@@ -28,10 +28,9 @@ public class Main {
             sickRecord[i][1] = Integer.parseInt(stk.nextToken()); // t초에 아팠는가
         }
 
-        
-        int[] sickPersons = new int[S];
-        for(int i = 0; i < S; i++) {
-            sickPersons[i] = sickRecord[i][0];
+        if(M == 1) {
+            System.out.print(N);
+            return;
         }
 
         int ans = 0;
