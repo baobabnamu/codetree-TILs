@@ -52,7 +52,7 @@ public class Main {
             }
         }
 
-        int[] spoiledCheezeAtePersons = new int[N];
+        int[] spoiledCheezeAtePersons = new int[M + 1];
         for(int i = 0; i < D; i++) {
             int cheezePerson = cheezeRecord[i][0];
             int cheezeType = cheezeRecord[i][1];
