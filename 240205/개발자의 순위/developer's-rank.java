@@ -1,49 +1,46 @@
-import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer stk = new StringTokenizer(br.readLine());
-        int K = Integer.parseInt(stk.nextToken());
-        int N = Integer.parseInt(stk.nextToken());
+    private static final int MAX_K = 10;
+    private static final int MAX_N = 20;
 
-        int[][] numArrs = new int[K][N];
+    private static int K, N;
+    private static int[][] arr = new int[MAX_K][MAX_N];
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        K = sc.nextInt();
+        N = sc.nextInt();
 
         for(int i = 0; i < K; i++) {
-            stk = new StringTokenizer(br.readLine());
             for(int j = 0; j < N; j++) {
-                numArrs[i][j] = Integer.parseInt(stk.nextToken());
+                arr[i][j] = sc.nextInt();
             }
         }
 
         int pair = 0;
-        for(int i = 1; i <= N; i++){
-            for(int j = 1; j <= N; j++){
-                if(i == j){
-                    continue;
-                }
-                int cnt = 0;
-                for(int k = 0; k < numArrs.length; k++){
-                    int i_idx = -1;
-                    int j_idx = -1;
-                    for(int h = 0; h < numArrs[k].length; h++){
-                        if(numArrs[k][h] == i){
-                            i_idx = h;
-                        }
-                        else if(numArrs[k][h] == j){
-                            j_idx = h;
-                        }
+        for(int i = 1; i <= N; i++) {
+            for(int j = 1; j <= N; j++) {
+                if(i == j) continue;
+
+                // i번 개발자가 j번 개발자보다 높은 순위일때 true
+                boolean correct = true;
+
+                for(int x = 0; x < K; x++) {
+                    int indexI = 0, indexJ = 0;
+
+                    for(int y = 0; y < N; y++) {
+                        if(arr[x][y] == i) indexI = y;
+                        if(arr[x][y] == j) indexJ = y;
                     }
-                    if(i_idx > j_idx){
-                        cnt++;
-                    }
+
+                    if(indexI > indexJ) correct = false;
                 }
-                if(cnt == numArrs.length){
-                    pair++;
-                }
+
+                if(correct) pair++;
             }
         }
+
         System.out.print(pair);
     }
 }
