@@ -20,15 +20,11 @@ public class Main {
         int max = -1;
         for(int i = 0; i < n; i++) {
             for(int j = 1; j <= k; j++) {                
-                // if(inRange(i - j)) {
-                //     if(boombs[i] == boombs[i - j]) {
-                //         max = Math.max(max, boombs[i]);
-                //     }
-                // } 
-                if (inRange(i + j)) {
-                    if(boombs[i] == boombs[i + j]) {
-                        max = Math.max(max, boombs[i]);
-                    }
+                if(inRange(i + j)) {
+                    if(boombs[i] != boombs[i + j]) 
+                        continue;
+                    
+                    max = Math.max(max, boombs[i]);
                 }
             }
         }
