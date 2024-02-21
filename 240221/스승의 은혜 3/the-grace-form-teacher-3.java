@@ -30,8 +30,6 @@ public class Main {
                 if(sum + tmp <= b) {
                     student++;
                     sum += tmp;
-                } else {
-                    break;
                 }
             }
             ans = Math.max(ans, student);
