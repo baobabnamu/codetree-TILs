@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.*;
 
 class Student implements Comparable<Student> {
     int price;
@@ -11,7 +12,7 @@ class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student o) {
-        return (this.price + this.devFee) + (o.price + o.devFee);
+        return (this.price + this.devFee) - (o.price + o.devFee);
     }
 }
 
@@ -21,6 +22,8 @@ public class Main {
         int n = sc.nextInt();
         int b = sc.nextInt();
         Student[] s = new Student[n];
+		int max = 0;
+
         for(int i = 0; i < n; i++) {
             s[i] = new Student(sc.nextInt(), sc.nextInt());
         }
