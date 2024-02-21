@@ -1,56 +1,39 @@
-import java.io.*;
 import java.util.*;
 
-class Student {
-    int present;
+class Student implements Comparable<Student> {
+    int price;
     int deliveryFee;
-    int cost;
 
-    public Student(int present, int deliveryFee, int cost) {
-        this.present = present;
+    public Student(int price, int deliveryFee) {
+        this.price = price;
         this.deliveryFee = deliveryFee;
-        this.cost = cost;
     }
-}
 
-class StudentComparator implements Comparator<Student> {
-    public int compare(Student s1, Student s2) {
-        return s1.cost - s2.cost;
+    @Override
+    public int compareTo(Student s) {
+        return (this.price + this.deliveryFee) - (s.price + s.deliveryFee);
     }
 }
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer stk = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(stk.nextToken());
-        int b = Integer.parseInt(stk.nextToken());
-
-        Student[] students = new Student[n];
-
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int b = sc.nextInt();
+        Student[] s = new Student[n];
         for(int i = 0; i < n; i++) {
-            stk = new StringTokenizer(br.readLine());
-            int present = Integer.parseInt(stk.nextToken());
-            int deliveryFee = Integer.parseInt(stk.nextToken());
-            int cost = (present / 2) + deliveryFee;
-
-            students[i] = new Student(present, deliveryFee, cost);
+            s[i] = new Student(sc.nextInt(), sc.nextInt());
         }
 
-        // 정렬
-        Arrays.sort(students, new StudentComparator());
+        Arrays.sort(s);
 
-        // 이중 반복문
         int ans = 0;
         for(int i = 0; i < n; i++) {
             int budget = b;
             int cnt = 0;
             for(int j = 0; j < n; j++) {
-                if(i == j) {
-                    budget -= students[j].cost;
-                } else {
-                    budget -= (students[j].present + students[j].deliveryFee);
-                }
+                if(i == j) budget -= ((s[j].price / 2) + s[j].deliveryFee);
+                else budget -= (s[j].price + s[j].deliveryFee);
 
                 if(budget >= 0) cnt++;
                 else break;
