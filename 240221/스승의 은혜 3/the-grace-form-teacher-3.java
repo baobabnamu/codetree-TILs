@@ -1,46 +1,50 @@
-import java.util.*;
-
-class Student implements Comparable<Student> {
-    int price;
-    int deliveryFee;
-
-    public Student(int price, int deliveryFee) {
-        this.price = price;
-        this.deliveryFee = deliveryFee;
-    }
-
-    @Override
-    public int compareTo(Student s) {
-        return (this.price + this.deliveryFee) - (s.price + s.deliveryFee);
-    }
-}
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int b = sc.nextInt();
-        Student[] s = new Student[n];
-        for(int i = 0; i < n; i++) {
-            s[i] = new Student(sc.nextInt(), sc.nextInt());
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int result = 0;
+        int student = Integer.parseInt(st.nextToken());
+        int totalMoney = Integer.parseInt(st.nextToken());
+        int[][] arr = new int[student][2];
+
+        for (int i = 0; i < student; i++) {
+            st = new StringTokenizer(br.readLine());
+            arr[i][0] = Integer.parseInt(st.nextToken());
+            arr[i][1] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(s);
+        Arrays.sort(arr, Comparator.comparingInt(a -> (a[0] + a[1])));
 
-        int ans = 0;
-        for(int i = 0; i < n; i++) {
-            int budget = b;
-            int cnt = 0;
-            for(int j = 0; j < n; j++) {
-                if(i == j) budget -= ((s[j].price / 2) + s[j].deliveryFee);
-                else budget -= (s[j].price + s[j].deliveryFee);
+        for (int couponIdx = 0; couponIdx < student; couponIdx++) {
+            int sum = 0;
+            int ableGiveCnt = 0;
 
-                if(budget >= 0) cnt++;
-                else break;
+            for (int i = 0; i < student; i++) {
+                if (i == couponIdx) {
+                    sum += arr[i][0] / 2 + arr[i][1];
+                } else {
+                    sum += arr[i][0] + arr[i][1];
+                }
+
+                if (sum > totalMoney) {
+                    break;
+                }
+
+                ableGiveCnt++;
             }
-            ans = Math.max(ans, cnt);
+
+            result = Math.max(result, ableGiveCnt);
         }
 
-        System.out.print(ans);
+        System.out.println(result);
     }
+
 }
