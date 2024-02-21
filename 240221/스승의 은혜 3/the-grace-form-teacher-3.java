@@ -1,19 +1,31 @@
 import java.util.*;
-import java.util.stream.*;
+
+class Student implements Comparable<Student> {
+    int price;
+    int devFee;
+
+    Student(int price, int devFee) {
+        this.price = price;
+        this.devFee = devFee;
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return (this.price + this.devFee) + (o.price + o.devFee);
+    }
+}
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int b = sc.nextInt();
-        int[][] hopeProduct = new int[n][b];
+        Student[] s = new Student[n];
         for(int i = 0; i < n; i++) {
-            for(int j = 0; j < 2; j++) {
-                hopeProduct[i][j] = sc.nextInt();
-            }
+            s[i] = new Student(sc.nextInt(), sc.nextInt());
         }
 
-        Arrays.sort(hopeProduct, Comparator.comparingInt(a -> IntStream.of(a).sum()));
+        Arrays.sort(s);
 
         int ans = 0;
         for(int i = 0; i < n; i++) {
@@ -22,9 +34,9 @@ public class Main {
             for(int j = 0; j < n; j++) {
                 int tmp = 0;
                 if(i == j) {
-                    tmp = (hopeProduct[j][0] / 2) + hopeProduct[j][1];
+                    tmp = ((s[j].price / 2) + s[j].devFee);
                 } else {
-                    tmp = hopeProduct[j][0] + hopeProduct[j][1];
+                    tmp = (s[j].price + s[j].devFee);
                 }
 
                 if(sum + tmp <= b) {
