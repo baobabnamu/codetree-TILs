@@ -3,35 +3,22 @@ import java.util.Comparator;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-class Student implements Comparable<Student> {
-    int price;
-    int deliveryFee;
-
-    public Student(int price, int deliveryFee) {
-        this.price = price;
-        this.deliveryFee = deliveryFee;
-    }
-
-    @Override
-    public int compareTo(Student o) {
-        return (this.price / 2 + this.deliveryFee) - (o.price / 2 + o.deliveryFee);
-    }
-}
-
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		int b = sc.nextInt();
-        Student[] s = new Student[n];
+		int[][] hopeProduct = new int[n][2];
 		int max = 0;
 
-        for(int i = 0; i < n; i++) {
-            s[i] = new Student(sc.nextInt(), sc.nextInt());
-        }
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < 2; j++){
+				hopeProduct[i][j] = sc.nextInt();
+			}
+		}
 
 		// 가격과 배송비의 합으로 정렬
-        Arrays.sort(s);
+		Arrays.sort(hopeProduct, Comparator.comparingInt(a -> IntStream.of(a).sum()));
 
 		for(int i = 0; i < n; i++){
 			int sum = 0;
@@ -39,9 +26,9 @@ public class Main {
 			for(int j = 0; j < n; j++){
 				int temp = 0;
 				if(i == j){
-					temp = (s[j].price / 2) + s[j].deliveryFee;
+					temp = hopeProduct[j][0] / 2 + hopeProduct[j][1];
 				}else{
-					temp = s[j].price + s[j].deliveryFee;
+					temp = hopeProduct[j][0] + hopeProduct[j][1];
 				}
 				if(sum + temp <= b){
 					sum += temp;
