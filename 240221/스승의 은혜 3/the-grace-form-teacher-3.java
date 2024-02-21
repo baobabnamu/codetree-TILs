@@ -33,14 +33,17 @@ public class Main {
             int sum = 0;
             int student = 0;
             for(int j = 0; j < n; j++) {
+                int temp = 0;
                 if(i == j) {
-                    sum += ((s[j].price / 2) + s[j].devlieryFee);
+                    temp ((s[j].price / 2) + s[j].devlieryFee);
                 } else {
-                    sum += (s[j].price  + s[j].devlieryFee);
+                    temp (s[j].price  + s[j].devlieryFee);
                 }
 
-                if(sum > b) break;
-                else student++;
+                if(sum + tmep <= b) {
+                    sum += temp;
+                    student++;
+                }
             }
             ans = Math.max(ans, student);
         }
