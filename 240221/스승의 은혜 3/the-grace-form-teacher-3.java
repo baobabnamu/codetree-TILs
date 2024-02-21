@@ -35,12 +35,12 @@ public class Main {
             for(int j = 0; j < n; j++) {
                 int temp = 0;
                 if(i == j) {
-                    temp ((s[j].price / 2) + s[j].devlieryFee);
+                    temp = ((s[j].price / 2) + s[j].devlieryFee);
                 } else {
-                    temp (s[j].price  + s[j].devlieryFee);
+                    temp = (s[j].price  + s[j].devlieryFee);
                 }
 
-                if(sum + tmep <= b) {
+                if(sum + temp <= b) {
                     sum += temp;
                     student++;
                 }
