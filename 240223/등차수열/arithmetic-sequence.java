@@ -21,10 +21,8 @@ public class Main {
         int ans = 0;
         for(int k = start; k <= end; k++) {
             int res = 0;
-            for(int i = 0; i < nums.length; i++) {
-                for(int j = 0; j < nums.length; j++) {
-                    if(i == j) continue;
-
+            for(int i = 0; i < n; i++) {
+                for(int j = i + 1; j < n; j++) { // 중복 제거 대신 i + 1
                     int a1 = nums[i];
                     int a2 = nums[j];
 
@@ -36,7 +34,7 @@ public class Main {
             ans = Math.max(ans, res);
         }
 
-        System.out.print(ans / 2); // 중복 수열 제거
+        System.out.print(ans);
     }
 
     private static boolean isAp(int a1, int k, int a2) {
