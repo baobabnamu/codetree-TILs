@@ -10,17 +10,17 @@ public class Main {
             // break 조건 : A + B >= C
         // 2. A 2번 쓸 때
             // 위와 동일
-            
+
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         int b = sc.nextInt();
         int c = sc.nextInt();
 
         int ans = 0;
-        for(int i = 1; (a * i) <= c; i++) {
+        for(int i = 0; (a * i) <= c; i++) {
             int res = 0;
 
-            for(int j = 1; (a * i) + (b * j) <= c; j++)
+            for(int j = 0; (a * i) + (b * j) <= c; j++)
                 res = (a * i) + (b * j);
 
             ans = Math.max(ans, res);
