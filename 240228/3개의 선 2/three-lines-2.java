@@ -65,11 +65,11 @@ public class Main {
         int cnt = 0;
 
         if(dir == 0) {
-            for(int i = 0; i <= 10; i++) {
+            for(int i = 0; i <= MAX_L; i++) {
                 if(space[line][i] == 1) cnt++;
             }
         } else {
-            for(int i = 0; i <= 10; i++) {
+            for(int i = 0; i <= MAX_L; i++) {
                 if(space[i][line] == 1) cnt++;
             }
         }
