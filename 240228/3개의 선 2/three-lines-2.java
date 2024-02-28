@@ -19,18 +19,18 @@ public class Main {
 
         int ans = 0;
         for(int i = 0; i <= MAX_L; i++) {
-            for(int j = i + 1; j <= MAX_L; j++) {
-                for(int k = j + 1; k <= MAX_L; k++) {
+            for(int j = 0; j <= MAX_L; j++) {
+                for(int k = 0; k <= MAX_L; k++) {
                     ans = drawThreeLines(i, j, k);
                     if(ans == 1) {
-                        System.out.print("1");
+                        System.out.print(ans);
                         return;
                     }
                 }
             }
         }
 
-        System.out.print("0");
+        System.out.print(ans);
     }
 
     private static int drawThreeLines(int line1, int line2, int line3) {
@@ -64,11 +64,11 @@ public class Main {
     private static int drawLine(int line, int dir) {
         int cnt = 0;
 
-        if(dir == 0) {
+        if(dir == 0) { // 가로
             for(int i = 0; i <= MAX_L; i++) {
                 if(space[line][i] == 1) cnt++;
             }
-        } else {
+        } else { // 세로
             for(int i = 0; i <= MAX_L; i++) {
                 if(space[i][line] == 1) cnt++;
             }
