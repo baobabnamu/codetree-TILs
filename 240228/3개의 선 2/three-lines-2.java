@@ -18,9 +18,9 @@ public class Main {
         }
 
         int ans = 0;
-        for(int i = 0; i <= 10; i++) {
-            for(int j = i + 1; j <= 10; j++) {
-                for(int k = j + 1; k <= 10; k++) {
+        for(int i = 0; i <= MAX_L; i++) {
+            for(int j = i + 1; <= MAX_L; j++) {
+                for(int k = j + 1; <= MAX_L; k++) {
                     ans = drawThreeLines(i, j, k);
                     if(ans == 1) {
                         System.out.print("1");
