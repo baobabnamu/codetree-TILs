@@ -21,8 +21,8 @@ public class Main {
         int ans = 0;
 
         for(int i = 0; i <= MAX_X; i++)
-            for(int j = 0; j <= MAX_X; j++)
-                for(int k = 0; k <= MAX_X; k++) {
+            for(int j = i + 1; j <= MAX_X; j++)
+                for(int k = j + 1; k <= MAX_X; k++) {
                     boolean success = true;
                     for(int l = 0; l < n; l++) {
                         if(x[l] == i || x[l] == j || x[l] == k)
