@@ -17,7 +17,7 @@ public class Main {
         String baseString = sc.next();
 
         int ans = 0;
-        for(int i = 1; i <= (n / 2) + (n % 2); i++) {
+        for(int i = 1; i <= 100; i++) {
             boolean isPossible = false;
             for(int j = 0; j < n; j++) {
                 if(j + i <= n && !isPossible) {
