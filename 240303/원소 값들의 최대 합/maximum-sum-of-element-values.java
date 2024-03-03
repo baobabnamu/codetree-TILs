@@ -14,7 +14,7 @@ public class Main {
             numArr[i] = sc.nextInt();
 
         int ans = 0;
-        for(int i = 1; i < n; i++) {
+        for(int i = 1; i <= n; i++) {
             int sum = move(i, m, 0);
             ans = Math.max(ans, sum);
         }
