@@ -28,37 +28,32 @@ public class Main {
             // 2-1. i : 0번 자리 ~ n - 1번 자리까지 반복
             //      i번 자리가 공석인 경우에만 2-2 로 넘어감
             // 2-2. 가장 가까운 사람의 거리를 구하는 함수 호출
-            //      함수 로직 : 좌우측 기준으로 더 가까운 사람의 값 구하기
         int ans = 0;
         for(int i = 0; i < n; i++) {
             if(space[i] == 0) {
-                int distance = calcDistance(i);
+                space[i] = 1;
+                int distance = calcDistance();
                 ans = Math.max(ans, distance);
+                space[i] = 0;
             }
         }
 
         System.out.print(ans);
     }
-    private static int calcDistance(int index) {
-        int baseNumber = index;
-        int leftDiff, rightDiff, leftPeople = 0, rightPeople = 0;
 
-        for(int i = baseNumber; i >= 0; i--) {
+    private static int calcDistance() {
+        int res = MAX_N;
+        int distance = 1;
+
+        for(int i = 1; i < n; i++) {
             if(space[i] == 1) {
-                leftPeople = i;
-                break;
+                res = Math.min(res, distance);
+                distance = 1;
+            } else {
+                distance++;
             }
         }
 
-        for(int i = baseNumber; i < n; i++) {
-            if(space[i] == 1) {
-                rightPeople = i;
-                break;
-            }
-        }
-
-        leftDiff = Math.abs(baseNumber - leftPeople);
-        rightDiff = Math.abs(baseNumber - rightPeople);
-        return Math.min(leftDiff, rightDiff);
+        return res;
     }
 }
