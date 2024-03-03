@@ -4,7 +4,7 @@ public class Main {
     private static final int MAX_N = 20;
 
     private static int[] space;
-    private static int n;
+    private static int n, peopleCnt = 0;
 
     public static void main(String[] args) {
         // 최대한의 거리두기를 실행한 간격을 출력
@@ -22,6 +22,7 @@ public class Main {
         for(int i = 0; i < n; i++) {
             int index = Integer.parseInt(spaceValues.substring(i, i + 1));
             space[i] = index;
+            if(space[i] == 1) peopleCnt++;
         }
 
         // 2. 독서실 완탐
@@ -42,16 +43,18 @@ public class Main {
     }
 
     private static int calcDistance() {
-        int res = MAX_N;
-        int distance = 1;
+        int[] indexes = new int[peopleCnt + 1];
+        int index = 0;
 
-        for(int i = 1; i < n; i++) {
-            if(space[i] == 1) {
-                res = Math.min(res, distance);
-                distance = 1;
-            } else {
-                distance++;
-            }
+        for(int i = 0; i < n; i++) {
+            if(space[i] == 1)
+                indexes[index++] = i;
+        }
+
+        int res = MAX_N;
+        for(int i = 0; i < indexes.length - 1; i++) {
+            int distance = indexes[i + 1] - indexes[i];
+            res = Math.min(res, distance);
         }
 
         return res;
