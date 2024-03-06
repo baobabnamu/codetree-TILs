@@ -44,7 +44,7 @@ public class Main {
         // 인덱스 값을 기준으로 2칸을 넘게 차이난다면 false
         for(int i = 1; i < cnt; i++) {
             int dist = availaleIndexs[i] - availaleIndexs[i - 1];
-            if(dist > 2)
+            if(dist > k)
                 return false;
         }
 
