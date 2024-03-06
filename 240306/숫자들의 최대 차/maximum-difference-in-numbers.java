@@ -48,7 +48,7 @@ public class Main {
             }
         }
 
-        // System.out.println("result : " + calcCnt(1));
+        // System.out.println("result : " + calcCnt(3));
 
         System.out.print(ans);
     }
@@ -60,6 +60,7 @@ public class Main {
             // System.out.println("minNum : " + minNum + ", nums[i] : " + nums[i] + ", result : " + Math.abs(minNum - nums[i]) + ", k : " + k);
             if(Math.abs(minNum - nums[i]) <= k) {
                 cnt++;
+                minNum = Math.min(minNum, nums[i]);
             }
             // System.out.println("cnt : " + cnt);
         }
