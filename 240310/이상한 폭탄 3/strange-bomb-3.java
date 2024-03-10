@@ -1,47 +1,41 @@
-import java.io.*;
 import java.util.*;
 
 public class Main {
+    private static final int MAX_NUM = 1000000;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); int k = sc.nextInt();
+        int[] boombs = new int[n];
+        for(int i = 0; i < n; i++) boombs[i] = sc.nextInt();
+        int[] boombsCnt = new int[MAX_NUM + 1];
+        boolean[] explodes = new boolean[n];
 
-    static final int MAX_N = 100;
-    static int N, K;
-    static int[] bombs;
+        int maxVal = 1;
+        int maxIdx = 0;
+        for(int i = 0; i < n; i++) {
+            for(int j = i + 1; j < n; j++) {
+                if(j - i > k) break;
+                if(boombs[i] != boombs[j]) continue;
+                
+                if(explodes[i] == false) {
+                    boombsCnt[boombs[i]]++;
+                    explodes[i] = true;
+                }
 
-    public static void main(String[] args) throws IOException {
-        bombs = new int[MAX_N + 1];
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
-        N = Integer.parseInt(st.nextToken());
-        K = Integer.parseInt(st.nextToken());
-
-        for (int i = 0; i < N; i++) {
-            bombs[i] = Integer.parseInt(br.readLine());
-        }
-
-        int maxBomb = 0;
-        int maxFindBombCount = 0;
-
-        for (int curr = 0; curr < N; curr++) {
-            int currBomb = bombs[curr];
-            int findBombCount = 0;
-            for (int left = curr - K; left < curr; left++) {
-                if (left < 0) continue;
-                if (currBomb == bombs[left]) findBombCount++;
-            }
-            for (int right = curr + 1; right < curr + K; right++) {
-                if (right >= N) continue;
-                if (currBomb == bombs[right]) findBombCount++;
-            }
-
-            if (findBombCount != 0 && (maxFindBombCount < findBombCount ||
-                    (maxFindBombCount == findBombCount && maxBomb < currBomb))) {
-                maxBomb = currBomb;
-                maxFindBombCount = findBombCount;
+                if(explodes[j] == false) {
+                    boombsCnt[boombs[j]]++;
+                    explodes[j] = true;
+                }
             }
         }
 
-        System.out.println(maxBomb);
+        for(int i = 0; i <= MAX_NUM; i++) {
+            if(maxVal <= boombsCnt[i]) {
+                maxVal = boombsCnt[i];
+                maxIdx = i;
+            }
+        }
+
+        System.out.print(maxIdx);
     }
 }
