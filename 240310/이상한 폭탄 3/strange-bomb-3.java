@@ -17,8 +17,12 @@ public class Main {
         // 아이디어 : 완탐으로 하나하나 터지는 걸 계산해보기
         // 1) i : 폭탄 배열을 순회
         // ans : Math.max(ans, 7번이 터질 때의 터지는 폭탄 개수를 구하는 함수 호출)
+        // TC :
+        // 0이 1개만 들어오는 경우
+        // 폭탄의 번호가 최댓값인 경우
+        // 연달아 폭탄이 터지는 경우
         int ans = 0;
-        int max = 0;
+        int max = 1;
         for(int i = 0; i < n; i++) {
             boolean[] useBoombs = new boolean[n];
             cnt = 0;
@@ -28,7 +32,7 @@ public class Main {
                 ans = boombs[i];
                 max = cnt;
             } 
-            else if(max == cnt && ans < i) {
+            else if(max == cnt && ans < i && ans != 0) {
                 ans = boombs[i];
             }
         }
