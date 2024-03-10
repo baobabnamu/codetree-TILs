@@ -26,12 +26,12 @@ public class Main {
         // 총 누적된 비용 적은 값으로 갱신
 
         int ans = INT_MAX;
-        for(int i = 0; i <= MAX_H - BASE_DIFF; i++) {
+        for(int i = 0; i <= MAX_H; i++) {
             minVal = i;
             maxVal = i + BASE_DIFF;
             int cost = 0;
             for(int j = 0; j < n; j++) {
-                if(Math.abs(maxVal - arr[j]) <= BASE_DIFF && Math.abs(minVal - arr[j]) <= BASE_DIFF) continue;
+                if(minVal <= arr[j] && maxVal >= arr[j]) continue;
                 cost += calcCost(arr[j]);
             }
             ans = Math.min(ans, cost);
@@ -40,6 +40,7 @@ public class Main {
     }
 
     private static int calcCost(int value) {
-        return Math.min(Math.abs(maxVal - value), Math.abs(minVal - value)) * 3;
+        int diff = Math.min(Math.abs(maxVal - value), Math.abs(minVal - value));
+        return diff * diff;
     }
 }
