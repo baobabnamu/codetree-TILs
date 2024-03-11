@@ -12,7 +12,7 @@ public class Main {
         n = sc.nextInt(); m = sc.nextInt();
         for(int i = 0; i < n; i++) nums[i] = sc.nextInt();
 
-        int ans = MAX_NUMBER;
+        // int ans = MAX_NUMBER;
         for(int i = 1; i <= MAX_NUMBER; i++) {
             boolean possible = true;
             int section = 1;
@@ -33,10 +33,9 @@ public class Main {
             }
 
             if(possible && section <= m) {
-                ans = i;
+                System.out.print(i);
+                return;
             }
         }
-
-        System.out.print(ans);
     }
 }
