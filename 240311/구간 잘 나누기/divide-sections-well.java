@@ -33,7 +33,7 @@ public class Main {
             }
 
             if(possible && section <= m) {
-                ans = Math.min(ans, sum);
+                ans = Math.min(ans, i);
                 break;
             }
         }
