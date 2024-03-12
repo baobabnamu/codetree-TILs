@@ -6,7 +6,7 @@ public class Main {
         int x1 = sc.nextInt(); int x2 = sc.nextInt(); int x3 = sc.nextInt(); int x4 = sc.nextInt();
 
         if(x2 < x3 || x4 < x1) {
-            System.out.print("not intersecting");
+            System.out.print("nonintersecting");
         } else {
             System.out.print("intersecting");
         }
