@@ -35,6 +35,6 @@ public class Main {
             }
         }
 
-        System.out.print("nooverlapping");
+        System.out.print("nonoverlapping");
     }
 }
