@@ -26,8 +26,8 @@ public class Main {
 
         int a = nums[0]; int b = nums[1];
         
+        int[] compNums = new int[7];
         for(int c = b; c <= MAX_N; c++) {
-            int[] compNums = new int[7];
             compNums[0] = a;
             compNums[1] = b;
             compNums[2] = c;
