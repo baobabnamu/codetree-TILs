@@ -7,7 +7,7 @@ public class Main {
     static int[] arr;
     static int N, L;
 
-    public static void main(String[] args) throws IOExetpion {
+    public static void main(String[] args) throws IOException {
        arr = new int[MAX_N];
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
