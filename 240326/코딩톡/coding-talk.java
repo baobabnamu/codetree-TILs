@@ -2,47 +2,59 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt(); int m = sc.nextInt(); int p = sc.nextInt();
-        int[][] messages = new int[m][2];
-        HashMap<Integer, Integer> store = new HashMap<>();
-        for(int i = 0; i < m; i++) {
-            messages[i][0] = (int)sc.next().charAt(0);
-            messages[i][1] = sc.nextInt();
-            store.put(messages[i][0], messages[i][1]);
+
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        int P = sc.nextInt();
+
+        char[] personList = new char[M + 1];
+        int[] readList = new int[M + 1];
+
+        for (int i = 1; i <= M; i++) {
+            char c = sc.next().charAt(0);
+            int u = sc.nextInt();
+
+            personList[i] = c;
+            readList[i] = u;
         }
 
-        if(p == 1) {
-            return;
-        }
+        // A ~ n
+        boolean[] readPerson = new boolean[N];
 
-        int[] messagers = new int[m];
-        for(int i = 0; i < m; i++) {
-            messagers[i] = 'A' + i;
-        }
+        for (int i = 1; i <= P; i++) {
+            if (readList[i] == 0) {
+                Arrays.fill(readPerson, true);
+            } else {
+                if (readList[i - 1] == readList[i]) {
+                    int idx1 = personList[i - 1] - 'A';
+                    int idx2 = personList[i] - 'A';
 
-        int[] messagesSenders = new int[m];
-        for(int i = p - 1; i < m; i++) {
-            messagesSenders[i] = messages[i][0];
-        }
+                    readPerson[idx1] = true;
+                    readPerson[idx2] = true;
+                } else {
+                    Arrays.fill(readPerson, false);
+                    int idx2 = personList[i] - 'A';
 
-        int[] answers = new int[m];
-        for(int i = 0; i < m; i++) {
-            boolean isRead = false;
-            for(int j = 0; j < m; j++) {
-                if(messagers[i] == messagesSenders[j]) {
-                    isRead = true;
+                    readPerson[idx2] = true;
                 }
             }
-
-            if(!isRead) {
-                answers[i] = messagers[i];
-            }
         }
 
-        for(int people : answers) {
-            if(people != 0) {
-                System.out.printf("%c ", people);
+        for (int i = P; i <= M; i++) {
+            char person = personList[i];
+
+            int idx = person - 'A';
+
+            readPerson[idx] = true;
+        }
+
+        if (readList[P] != 0) {
+            for (int i = 0; i < readPerson.length; i++) {
+                if (!readPerson[i]) {
+                    System.out.printf("%s ", (char) ((char) i + 'A'));
+                }
             }
         }
     }
