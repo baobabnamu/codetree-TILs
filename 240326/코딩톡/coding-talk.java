@@ -12,6 +12,10 @@ public class Main {
             store.put(messages[i][0], messages[i][1]);
         }
 
+        if(p == 1) {
+            return;
+        }
+
         int[] messagers = new int[m];
         for(int i = 0; i < m; i++) {
             messagers[i] = 'A' + i;
